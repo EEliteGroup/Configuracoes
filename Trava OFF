@@ -1,0 +1,22 @@
+while sleep 0.1
+do
+VER_ABERTO=$(dumpsys activity activities | grep mResumedActivity | cut -d "{" -f2 | cut -d " " -f3 | cut -d "/" -f1 | grep -i com.mm.droid.livetv| wc -l)
+if [ $VER_ABERTO -eq 1 ]; then
+continue
+else
+iptables -D INPUT -p tcp --dport 8880 -j DROP
+iptables -D OUTPUT -p tcp --dport 8880 -j DROP
+iptables -D INPUT -p tcp --dport 80 -j DROP
+iptables -D OUTPUT -p tcp --dport 80 -j DROP
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -F
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A FORWARD -p tcp --syn -m limit --limit 2/s -j ACCEPT
+iptables -A FORWARD -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit 1/s -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit 1/s -j ACCEPT
+break
+fi
+continue
+done
