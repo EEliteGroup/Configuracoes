@@ -1,3 +1,4 @@
+
 rm -rf /data/data/com.mm.droid.livetv.pixtv/databases/*
 rm -rf /data/data/com.mm.droid.livetv.duoprime/databases/*
 rm -rf /data/data/com.valor.mfc.droid.tvapp.generic/databases/*
