@@ -11,3 +11,5 @@ iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -p tcp --syn -m limit --limit 2/s -j ACCEPT
 iptables -A FORWARD -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit 1/s -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit 1/s -j ACCEPT
+OTA_off=/data/local/trava_off
+rm -rf $OTA_off
