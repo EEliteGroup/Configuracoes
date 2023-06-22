@@ -1,7 +1,7 @@
 while sleep 0.1
 do
 VER_ABERTO=$(dumpsys activity activities | grep mResumedActivity | cut -d "{" -f2 | cut -d " " -f3 | cut -d "/" -f1 | grep -i com.mm.droid.livetv| wc -l)
-if [ $VER_ABERTO -eq 1 ]; then
+if [ ${VER_ABERTO} -eq 1 ]; then
 continue
 else
 iptables -D INPUT -p tcp --dport 8880 -j DROP
