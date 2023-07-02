@@ -1,29 +1,4 @@
 #TRAVA ON
-iptables --table nat --append PREROUTING --match iprange --src-range 192.0.0.1-192.255.255.254 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.1
-iptables --table nat --append PREROUTING --match iprange --src-range 192.0.0.1-192.255.255.254 --protocol tcp --dport 53 --jump DNAT --to-destination 8.8.6.1
-iptables --table nat --append PREROUTING --match iprange --src-range 198.0.0.1-198.255.255.254 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.1
-iptables --table nat --append PREROUTING --match iprange --src-range 198.0.0.1-198.255.255.254 --protocol tcp --dport 53 --jump DNAT --to-destination 8.8.6.1
-iptables --table nat --append PREROUTING --match iprange --src-range 100.0.0.1-101.255.255.254 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.1
-iptables --table nat --append PREROUTING --match iprange --src-range 10.0.0.1-10.0.0.254 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.1
-iptables --table nat --append PREROUTING --match iprange --src-range 104.0.0.1-104.255.0.0 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.40
-iptables -A INPUT -p udp --dport 80:41000 -j DROP
-iptables -A OUTPUT -p udp --dport 80:9001 -j DROP
-iptables -A INPUT -s 177.0.0.0/8 -j DROP
-iptables -A INPUT -d 177.0.0.0/8 -j DROP
-iptables -A INPUT -s 104.0.0.0/8 -j DROP
-iptables -A INPUT -d 104.0.0.0/8 -j DROP
-iptables -A INPUT -s 172.67.0.0/16 -j DROP
-iptables -A INPUT -d 172.67.0.0/16 -j DROP
-iptables -A INPUT -s 223.0.0.0/8 -j DROP
-iptables -A INPUT -d 223.0.0.0/8 -j DROP
-iptables -A INPUT -s 203.0.0.0/8 -j DROP
-iptables -A INPUT -d 203.0.0.0/8 -j DROP
-iptables -A INPUT -s 208.0.0.0/8 -j DROP
-iptables -A INPUT -d 208.0.0.0/8 -j DROP
-iptables -A INPUT -s 3.0.0.0/8 -j DROP
-iptables -A INPUT -d 3.0.0.0/8 -j DROP
-iptables -A INPUT -s 18.0.0.0/8 -j DROP
-iptables -A INPUT -d 18.0.0.0/8 -j DROP
 iptables  -A INPUT -p tcp --dport 80 -j DROP
 iptables  -A OUTPUT -p tcp --dport 80 -j DROP
 iptables  -A INPUT -p tcp --dport 123 -j DROP
