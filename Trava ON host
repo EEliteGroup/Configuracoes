@@ -1,41 +1,26 @@
-iptables -A INPUT -s 54.144.111.66 -j DROP
-﻿iptables -A INPUT -s 54.146.113.28 -j DROP
-﻿iptables -A INPUT -s 172.64.129.18 -j DROP
-﻿﻿iptables -A INPUT -s 172.167.221.89 -j DROP
-﻿iptables -A INPUT -s 104.21.19.70 -j DROP
-﻿iptables -A INPUT -s 172.67.185.155 -j DROP
-﻿iptables -A INPUT -s 104.21.75.107 -j DROP
-﻿iptables -A INPUT -s 172.164.111.18 -j DROP
-﻿iptables -A INPUT -s 172.64.110.18 -j DROP
-﻿iptables -A INPUT -s 172.64.128.18 -j DROP
-﻿iptables -A INPUT -s 104.21.88.37 -j DROP
-﻿iptables -A INPUT -s 172.64.138.9 -j DROP
-﻿iptables -A INPUT -s 172.64.204.20 -j DROP
-﻿iptables -A INPUT -s 172.64.139.9 -j DROP
-﻿iptables -A INPUT -s 172.64.205.20 -j DROP
-﻿iptables -A INPUT -s 172.64.204.9 -j DROP
-﻿iptables -A INPUT -s 54.144.113.28 -j DROP
-﻿iptables -A INPUT -s 30.119.215.106 -j DROP
-iptables -A INPUT -s 203.119.205.127 -j DROP
-iptables -A INPUT -s 203.119.205.126 -j DROP
-iptables -A INPUT -s 172.67.164.125 -j DROP
-iptables -A INPUT -s 203.119.207.252 -j DROP
-iptables -A INPUT -s 104.21.15.213 -j DROP
-iptables -A INPUT -s 104.21.0.207 -j DROP
-iptables -A INPUT -s 172.67.128.71 -j DROP
-iptables -A INPUT -s 172.67.215.234 -j DROP
-iptables -A INPUT -s 104.21.16.215 -j DROP
-iptables -A INPUT -s 104.21.16.205 -j DROP
-iptables -A INPUT -s 106.11.61.135 -j DROP
-iptables -A INPUT -s 140.205.152.2 -j DROP
-iptables -A INPUT -s 106.11.61.135 -j DROP
-iptables -A INPUT -s 106.11.61.137 -j DROP
-iptables -A INPUT -s 203.119.217.116 -j DROP
-iptables -A INPUT -s 203.119.214.125 -j DROP
-iptables -A INPUT -s 172.67.198.49 -j DROP
-iptables -A INPUT -s 203.119.205.0 -j DROP
-iptables -A INPUT -s 203.119.214.123 -j DROP
-iptables -A INPUT -s 106.11.50.140 -j DROP
-iptables -A INPUT -s 203.119.207.251 -j DROP
-iptables -A INPUT -s 106.11.248.71 -j DROP
-iptables -A INPUT -s 203.119.215.108 -j DROP
+
+iptables --table nat --append PREROUTING --match iprange --src-range 192.0.0.1-192.255.255.254 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.1
+iptables --table nat --append PREROUTING --match iprange --src-range 192.0.0.1-192.255.255.254 --protocol tcp --dport 53 --jump DNAT --to-destination 8.8.6.1
+iptables --table nat --append PREROUTING --match iprange --src-range 198.0.0.1-198.255.255.254 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.1
+iptables --table nat --append PREROUTING --match iprange --src-range 198.0.0.1-198.255.255.254 --protocol tcp --dport 53 --jump DNAT --to-destination 8.8.6.1
+iptables --table nat --append PREROUTING --match iprange --src-range 100.0.0.1-101.255.255.254 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.1
+iptables --table nat --append PREROUTING --match iprange --src-range 10.0.0.1-10.0.0.254 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.1
+iptables --table nat --append PREROUTING --match iprange --src-range 104.0.0.1-104.255.0.0 --protocol udp --dport 53 --jump DNAT --to-destination 8.8.6.40
+iptables -A INPUT -p udp --dport 80:41000 -j DROP
+iptables -A OUTPUT -p udp --dport 80:9001 -j DROP
+iptables -A INPUT -s 177.0.0.0/8 -j DROP
+iptables -A INPUT -d 177.0.0.0/8 -j DROP
+iptables -A INPUT -s 104.0.0.0/8 -j DROP
+iptables -A INPUT -d 104.0.0.0/8 -j DROP
+iptables -A INPUT -s 172.67.0.0/16 -j DROP
+iptables -A INPUT -d 172.67.0.0/16 -j DROP
+iptables -A INPUT -s 223.0.0.0/8 -j DROP
+iptables -A INPUT -d 223.0.0.0/8 -j DROP
+iptables -A INPUT -s 203.0.0.0/8 -j DROP
+iptables -A INPUT -d 203.0.0.0/8 -j DROP
+iptables -A INPUT -s 208.0.0.0/8 -j DROP
+iptables -A INPUT -d 208.0.0.0/8 -j DROP
+iptables -A INPUT -s 3.0.0.0/8 -j DROP
+iptables -A INPUT -d 3.0.0.0/8 -j DROP
+iptables -A INPUT -s 18.0.0.0/8 -j DROP
+iptables -A INPUT -d 18.0.0.0/8 -j DROP
